@@ -13,7 +13,14 @@ return new class extends Migration
     {
         Schema::create('tabel_kunjungan', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_pengunjung');
+            $table->string('status_pengunjung');
+            $table->date('tgl_kunjungan');
             $table->timestamps();
+
+            //Relations
+            $table->foreign('id_buku');
+            $table->foreign('id_user');
         });
     }
 
