@@ -12,16 +12,19 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tabel_kunjungan', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama_pengunjung');
-            $table->string('status_pengunjung');
-            $table->date('tgl_kunjungan');
-            $table->timestamps();
+        $table->id();
+        $table->string('nama_pengunjung');
+        $table->string('status_pengunjung');
+        $table->date('tgl_kunjungan');
+        $table->unsignedBigInteger('id_buku'); // tambahkan kolom foreign key
+        $table->unsignedBigInteger('id_user');
+        $table->timestamps();
 
-            //Relations
-            $table->foreign('id_buku');
-            $table->foreign('id_user');
-        });
+        //Relations
+        $table->foreign('id_buku')->references('id')->on('tabel_buku')->onDelete('cascade');
+        $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
+    });
+
     }
 
     /**

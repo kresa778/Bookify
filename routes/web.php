@@ -6,6 +6,7 @@ use App\Http\Controllers\BukuController;
 use App\Http\Controllers\KunjunganController;
 use App\Http\Controllers\PengurusController;
 use App\Http\Controllers\PinjamanController;
+use App\Http\Controllers\dashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,7 @@ use App\Http\Controllers\PinjamanController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/katalog', [dashboardController::class, 'showKatalog']);
 
 Route::prefix('anggota')->group(function () {
     Route::get('tampil', [AnggotaController::class, 'ListAnggota']);
