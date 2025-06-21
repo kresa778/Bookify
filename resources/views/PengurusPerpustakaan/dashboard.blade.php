@@ -55,42 +55,7 @@
 </head>
 <body>
 
-    <div class="sidebar text-white">
-        <h4 class="text-center mb-4">Bookify Admin</h4>
-        <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link active" href="#">
-                    <i class="bi bi-grid-1x2-fill"></i> Dashboard
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="bi bi-book-fill"></i> Manajemen Buku
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="bi bi-people-fill"></i> Manajemen Anggota
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="bi bi-arrow-down-up"></i> Data Peminjaman
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="bi bi-person-check-fill"></i> Data Kunjungan
-                </a>
-            </li>
-             <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="bi bi-person-vcard"></i> Manajemen Pengurus
-                </a>
-            </li>
-        </ul>
-    </div>
-
+   <x-sidebar-admin></x-sidebar-admin>
     <div class="main-content">
         <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm p-3 mb-4">
             <div class="container-fluid">

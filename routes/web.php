@@ -48,9 +48,9 @@ Route::prefix('anggota')->group(function () {
 });
 
 Route::prefix('buku')->group(function () {
-    Route::get('tampil', [BukuController::class, 'ListBuku']);
-    Route::get('tambah', [BukuController::class, 'TambahBuku']);
-    Route::get('edit', [BukuController::class, 'EditBuku']);
+    Route::get('tampil', [BukuController::class, 'ListBuku'])->name('pengurus.buku');
+    Route::get('tambah', [BukuController::class, 'TambahBuku'])->name('pengurus.tambahbuku');
+    Route::get('edit', [BukuController::class, 'EditBuku'])->name('pengurus.editbuku');
 });
 
 Route::prefix('kunjungan')->group(function () {
