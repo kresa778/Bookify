@@ -2,20 +2,33 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Anggota;
+use App\Models\Buku;
 use Illuminate\Http\Request;
 
 class AnggotaController extends Controller
 {
-    public function ListAnggota()
+
+    public function DashboardAnggota()
     {
-        return view('Anggota.tampil');
+        $buku = Buku::all();
+        return view('Anggota.dashboard', compact('buku'));
     }
-    public function TambahAnggota()
+    public function DaftarBuku()
     {
-        return view('Anggota.tambah');
+        $buku = Buku::all();
+        return view('Anggota.buku', compact('buku'));
     }
-    public function EditAnggota()
+    public function show(Buku $buku)
     {
-        return view('Anggota.edit');
+        // Kirim data buku yang sudah ditemukan ke view 'detail'
+        return view('Anggota.detail', ['buku' => $buku]);
     }
+
+
+    // public function show(Anggota $anggota)
+    // {
+    //     // Kirim data buku yang sudah ditemukan ke view 'detail'
+    //     return view('detail', ['buku' => $anggota]);
+    // }
 }

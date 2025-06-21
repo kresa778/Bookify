@@ -45,7 +45,7 @@ class AuthController extends Controller
             // Jika anggota ditemukan dan password cocok
             Auth::guard('anggota')->login($anggota);
             $request->session()->regenerate();
-            return redirect()->route('anggota.tampil');
+            return redirect()->route('anggota.dashboard');
         }
 
         // 4. Jika keduanya gagal, kembali ke halaman login dengan pesan error
