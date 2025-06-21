@@ -18,4 +18,10 @@ class BukuController extends Controller
     {
         return view('Buku.edit');
     }
+
+    public function show(Buku $buku)
+    {
+        // Kirim data buku yang sudah ditemukan ke view 'detail'
+        return view('detail', ['buku' => $buku]);
+    }
 }

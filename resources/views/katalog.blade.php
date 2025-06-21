@@ -84,7 +84,7 @@
                                 </span>
                             </div>
                             <div class="mt-auto pt-3">
-                                <a href="#" class="btn btn-outline-primary w-100">Lihat Detail</a>
+                                <a href="{{ route('katalog.show', $item->id) }}" class="btn btn-outline-primary w-100">Lihat Detail</a>
                             </div>
                         </div>
                     </div>

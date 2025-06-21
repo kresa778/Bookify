@@ -40,7 +40,7 @@
                         <a class="nav-link" href="#fitur">Fitur</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#login">Login</a>
+                        <a class="nav-link" href="/login">Login</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Tentang Kami</a>
@@ -59,7 +59,7 @@
                         Aplikasi Perpustakaan Digital [Nama Sekolah]. Cari, pinjam, dan baca buku favoritmu di mana saja dan kapan saja.
                     </p>
                     <p>
-                        <a href="/login" class="btn btn-primary my-2">Masuk Sekarang</a>
+                        <a href="/katalog" class="btn btn-primary my-2">Masuk Sekarang</a>
                     </p>
                 </div>
             </div>

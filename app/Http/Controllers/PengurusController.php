@@ -6,16 +6,21 @@ use Illuminate\Http\Request;
 
 class PengurusController extends Controller
 {
+
+    public function index()
+    {
+        return view('PengurusPerpustakaan.dashboard');
+    }
     public function ListPengurus()
     {
-        return view('Pengurus.tampil');
+        return view('PengurusPerpustakaan.tampil');
     }
     public function TambahPengurus()
     {
-        return view('Pengurus.tambah');
+        return view('PengurusPerpustakaan.tambah');
     }
     public function EditPengurus()
     {
-        return view('Pengurus.edit');
+        return view('PengurusPerpustakaan.edit');
     }
 }

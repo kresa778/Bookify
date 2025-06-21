@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\TabelBuku;
+use App\Models\Buku;
 
 class dashboardController extends Controller
 {
@@ -12,7 +12,14 @@ class dashboardController extends Controller
     }
 
     public function showKatalog(){
-        $buku = TabelBuku::all();
+        $buku = Buku::all();
         return view('katalog', compact('buku'));
     }
+
+        public function show(Buku $buku)
+    {
+        // Kirim data buku yang sudah ditemukan ke view 'detail'
+        return view('detail', ['buku' => $buku]);
+    }
 }
+
