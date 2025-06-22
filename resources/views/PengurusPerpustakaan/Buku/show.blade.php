@@ -91,60 +91,45 @@
 
     <x-sidebar-admin></x-sidebar-admin>
     <div class="main-content">
-        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm p-3 mb-4">
-            <div class="container-fluid">
-                <div class="ms-auto">
-                    <div class="dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            <i class="bi bi-person-circle"></i> Nama Admin
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#">Profil</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Logout</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </nav>
+        <x-topbar></x-topbar>
 
         <main class="container-fluid">
+            <div class="container">
+                <h1>Detail Buku</h1>
 
-            <div class="row">
-                <div class="col-12">
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3 d-flex justify-content-between align-items-center">
-                            <h6 class="m-0 fw-bold text-primary">Daftar Buku</h6>
-                            <button class="btn btn-primary">Tambah Buku</button>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <strong>Nama Buku:</strong>
+                            <p>{{ $buku->nama_buku }}</p>
                         </div>
-
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Nama Buku</th>
-                                            <th>Judul Buku</th>
-                                            <th>Tanggal Pinjam</th>
-                                            <th>Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Budi Santoso</td>
-                                            <td>Laskar Pelangi</td>
-                                            <td>20 Jun 2025</td>
-                                            <td><span class="badge bg-info">Dipinjam</span></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                        <div class="mb-3">
+                            <strong>Penerbit:</strong>
+                            <p>{{ $buku->penerbit }}</p>
+                        </div>
+                        <div class="mb-3">
+                            <strong>ISBN:</strong>
+                            <p>{{ $buku->isbn }}</p>
+                        </div>
+                        <div class="mb-3">
+                            <strong>Edisi:</strong>
+                            <p>{{ $buku->edisi ?? '-' }}</p>
+                        </div>
+                        <div class="mb-3">
+                            <strong>Lokasi Buku:</strong>
+                            <p>{{ $buku->lokasi_buku }}</p>
+                        </div>
+                        <div class="mb-3">
+                            <strong>Status Buku:</strong>
+                            <p><span class="badge bg-info">{{ $buku->status_buku }}</span></p>
+                        </div>
+                        <div class="mb-3">
+                            <strong>Sinopsis:</strong>
+                            <p>{{ $buku->sinopsis ?? 'Tidak ada sinopsis.' }}</p>
                         </div>
                     </div>
                 </div>
+                <a class="btn btn-primary mt-3" href="{{ route('pengurus.buku.index') }}">Kembali</a>
             </div>
         </main>
     </div>

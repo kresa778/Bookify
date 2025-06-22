@@ -89,24 +89,7 @@
 <body>
     <x-sidebar-anggota></x-sidebar-anggota>
     <div class="main-content">
-        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm p-3 mb-4">
-            <div class="container-fluid">
-                <div class="ms-auto">
-                    <div class="dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-person-circle"></i> Nama Anggota
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#">Profil</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Logout</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </nav>
+        <x-topbar></x-topbar>
 
         <div class="container my-5">
             <h1 class="text-center mb-2">Koleksi Buku Perpustakaan</h1>

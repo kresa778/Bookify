@@ -1,12 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AnggotaController;
-use App\Http\Controllers\KunjunganController;
-use App\Http\Controllers\PengurusController;
-use App\Http\Controllers\PinjamanController;
-use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\dashboardController;
+use App\Http\Controllers\AnggotaController;
+
+
+use App\Http\Controllers\Pengurus\BukuController;
+use App\Http\Controllers\Pengurus\PengurusController;
+use App\Http\Controllers\Pengurus\PinjamanController;
 
 use Illuminate\Support\Facades\Hash;
 
@@ -47,22 +49,11 @@ Route::prefix('anggota')->group(function () {
 });
 
 
-
-Route::prefix('kunjungan')->group(function () {
-    Route::get('tampil', [KunjunganController::class, 'ListKunjungan']);
-    Route::get('tambah', [KunjunganController::class, 'TambahKunjungan']);
-    Route::get('edit', [KunjunganController::class, 'EditKunjungan']);
+Route::prefix('pengurus')->name('pengurus.')->group(function () {
+    Route::get('dashboard', [PengurusController::class, 'index'])->name('dashboard');
+    Route::resource('buku', BukuController::class);
+    Route::resource('pinjaman', PinjamanController::class);
 });
 
-Route::prefix('pengurus')->group(function () {
-    Route::get('dashboard', [PengurusController::class, 'index'])->name('pengurus.dashboard');
-    Route::get('tampil', [PengurusController::class, 'ListPengurus'])->name('pengurus.tampil');
-    Route::get('tambah', [PengurusController::class, 'TambahPengurus']);
-    Route::get('edit', [PengurusController::class, 'EditPengurus']);
-});
 
-Route::prefix('pinjaman')->group(function () {
-    Route::get('tampil', [PinjamanController::class, 'ListPinjaman']);
-    Route::get('tambah', [PinjamanController::class, 'TambahPinjaman']);
-    Route::get('edit', [PinjamanController::class, 'EditPinjaman']);
-});
+

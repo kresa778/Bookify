@@ -59,7 +59,7 @@
                         Aplikasi Perpustakaan Digital [Nama Sekolah]. Cari, pinjam, dan baca buku favoritmu di mana saja dan kapan saja.
                     </p>
                     <p>
-                        <a href="/katalog" class="btn btn-primary my-2">Masuk Sekarang</a>
+                        <a href="/login" class="btn btn-primary my-2">Masuk Sekarang</a>
                     </p>
                 </div>
             </div>
