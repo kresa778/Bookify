@@ -43,6 +43,10 @@ Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('
 Route::post('/register', [AuthController::class, 'register'])->name('register.post');
 
 Route::prefix('anggota')->group(function () {
+    // profile
+    Route::get('profile', [AnggotaController::class, 'profile'])->name('anggota.profile');
+    Route::put('profile', [AnggotaController::class, 'profileUpdate'])->name('anggota.profile.update');
+
     Route::get('dashboard', [AnggotaController::class, 'DashboardAnggota'])->name('anggota.dashboard');
     Route::get('buku', [AnggotaController::class, 'DaftarBuku'])->name('anggota.buku');
     Route::get('/buku/{buku}', [AnggotaController::class, 'show'])->name('anggota.buku.show');

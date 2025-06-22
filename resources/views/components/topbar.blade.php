@@ -4,10 +4,10 @@
             <div class="dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
-                    <i class="bi bi-person-circle"></i> Nama Anggota
+                    <i class="bi bi-person-circle"></i> {{ session('user_anggota')['nama_anggota'] }}
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item" href="#">Profil</a></li>
+                    <li><a class="dropdown-item" href="{{ route('anggota.profile') }}">Profil</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
