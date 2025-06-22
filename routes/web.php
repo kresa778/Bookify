@@ -50,6 +50,8 @@ Route::prefix('anggota')->group(function () {
     Route::get('dashboard', [AnggotaController::class, 'DashboardAnggota'])->name('anggota.dashboard');
     Route::get('buku', [AnggotaController::class, 'DaftarBuku'])->name('anggota.buku');
     Route::get('/buku/{buku}', [AnggotaController::class, 'show'])->name('anggota.buku.show');
+    Route::get('pinjaman', [AnggotaController::class, 'DaftarPinjaman'])->name('anggota.pinjaman');
+    Route::get('/pinjaman/cari', [AnggotaController::class, 'cari'])->name('pinjaman.cari');
 });
 
 

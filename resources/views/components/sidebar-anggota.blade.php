@@ -3,8 +3,8 @@
     <ul class="nav flex-column">
         <li class="nav-item">
             {{-- Aktif jika nama route persis 'admin.dashboard' --}}
-            <a class="nav-link {{ request()->routeIs('anggota.dashboard') ? 'active' : '' }}" href="{{ route('anggota.dashboard') }}">
-                <i class="bi bi-grid-1x2-fill"></i> Dashboard
+            <a class="nav-link {{ request()->routeIs('anggota.pinjaman') ? 'active' : '' }}" href="{{ route('anggota.pinjaman') }}">
+                <i class="bi bi-grid-1x2-fill"></i> Pinjaman
             </a>
         </li>
         <li class="nav-item">

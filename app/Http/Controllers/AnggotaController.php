@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Hash;
 
 use App\Models\Anggota;
 use App\Models\Buku;
+use App\Models\Pinjaman;
+
 
 class AnggotaController extends Controller
 {
@@ -26,6 +28,30 @@ class AnggotaController extends Controller
     {
         // Kirim data buku yang sudah ditemukan ke view 'detail'
         return view('Anggota.detail', ['buku' => $buku]);
+    }
+
+    public function DaftarPinjaman()
+    {
+        $pinjaman = Pinjaman::with('buku')->get(); // JOIN otomatis via Eloquent
+        return view('Anggota.pinjaman', compact('pinjaman'));
+    }
+    
+        public function showPinjaman(Pinjaman $pinjaman)
+        {
+            // Kirim data buku yang sudah ditemukan ke view 'detail'
+            return view('Anggota.pinjaman', ['pinjaman' => $pinjaman]);
+        }
+        public function cari(Request $request)
+    {
+        $keyword = $request->keyword;
+    
+        $pinjaman = Pinjaman::with('buku')
+            ->whereHas('buku', function ($query) use ($keyword) {
+                $query->where('nama_buku', 'like', "%$keyword%");
+            })
+            ->get();
+    
+        return view('Anggota.pinjaman', compact('pinjaman'));
     }
 
 
