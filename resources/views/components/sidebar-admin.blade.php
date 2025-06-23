@@ -19,5 +19,11 @@
                 <i class="bi bi-journal"></i> Daftar Pinjaman
             </a>
         </li>
+        <li class="nav-item">
+            {{-- Aktif jika nama route diawali dengan 'pengurus.buku' --}}
+            <a class="nav-link {{ request()->routeIs('pengurus.anggota.index*') ? 'active' : '' }}" href="{{ route('pengurus.anggota.index') }}">
+                <i class="bi bi-person-badge-fill"></i> Daftar Anggota
+            </a>
+        </li>
     </ul>
 </div>

@@ -9,6 +9,7 @@ use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\Pengurus\BukuController;
 use App\Http\Controllers\Pengurus\PengurusController;
 use App\Http\Controllers\Pengurus\PinjamanController;
+use App\Http\Controllers\Pengurus\AnggotaAdminController;
 
 use Illuminate\Support\Facades\Hash;
 
@@ -59,6 +60,7 @@ Route::prefix('pengurus')->name('pengurus.')->group(function () {
     Route::get('dashboard', [PengurusController::class, 'index'])->name('dashboard');
     Route::resource('buku', BukuController::class);
     Route::resource('pinjaman', PinjamanController::class);
+    Route::resource('anggota', AnggotaAdminController::class);
 });
 
 

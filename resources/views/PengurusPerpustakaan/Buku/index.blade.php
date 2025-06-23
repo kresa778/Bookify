@@ -91,7 +91,7 @@
 
     <x-sidebar-admin></x-sidebar-admin>
     <div class="main-content">
-        <x-topbar></x-topbar>
+        <x-topbar-admin></x-topbar-admin>
 
         <main class="container-fluid">
             <div class="row">

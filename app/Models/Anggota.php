@@ -3,19 +3,27 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable; // Penting untuk Auth
+// 1. Ganti 'Model' dengan 'Authenticatable'
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable; // Tambahkan ini
 
-class Anggota extends Authenticatable // Pastikan extends Authenticatable
+// 2. Ubah 'extends Model' menjadi 'extends Authenticatable'
+class Anggota extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory, Notifiable; // Tambahkan Notifiable
 
     /**
-     * Nama tabel yang terhubung dengan model ini.
+     * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'tabel_anggota'; // <-- TAMBAHKAN BARIS INI
+    protected $table = 'tabel_anggota';
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
         'nama_anggota',
         'email',
@@ -31,8 +39,24 @@ class Anggota extends Authenticatable // Pastikan extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
+        'remember_token', // Tambahkan ini untuk keamanan
     ];
 
-    // ... (isi model lainnya seperti $fillable, dll.)
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed', // Gunakan ini untuk hashing otomatis, lebih modern
+    ];
+
+    /**
+     * Get the loans for the member.
+     */
+    public function peminjaman()
+    {
+        return $this->hasMany(Pinjaman::class, 'anggota_id');
+    }
 }

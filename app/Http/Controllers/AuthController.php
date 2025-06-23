@@ -48,7 +48,7 @@ class AuthController extends Controller
 
             session(['user_anggota' => $anggota]);
 
-            return redirect()->route('anggota.dashboard');
+            return redirect()->route('anggota.pinjaman');
         }
 
         // 4. Jika keduanya gagal, kembali ke halaman login dengan pesan error

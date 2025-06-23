@@ -21,7 +21,7 @@ class DefaultSeeder extends Seeder
 
     /**
      * Seed default data user
-     * 
+     *
      * @return void
      */
     private function insertUser()
@@ -33,7 +33,14 @@ class DefaultSeeder extends Seeder
                 'email_pengurus' => 'pengurus@gmail.com',
                 'password' => Hash::make('pengurus'),
                 'kategori' => 'pengurus'
+            ],
+            [
+                'nama_pengurus' => 'anton',
+                'email_pengurus' => 'anton',
+                'password' => Hash::make('anton'),
+                'kategori' => 'pengurus'
             ]
+
         ];
 
         foreach ($pengurus as $item) {
@@ -43,7 +50,7 @@ class DefaultSeeder extends Seeder
 
     /**
      * Seed default data buku
-     * 
+     *
      * @return void
      */
     private function insertBuku()

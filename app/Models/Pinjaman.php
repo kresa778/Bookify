@@ -16,15 +16,21 @@ class Pinjaman extends Model
      */
     protected $table = 'tabel_pinjaman';
     protected $fillable = [
-        'id_buku',
-        'denda',
-        'keterangan',
-        'tgl_pinjaman',
-        'tgl_lambat',
+        'buku_id',
+        'anggota_id',
+        'tanggal_pinjam',
+        'tanggal_kembali',
+        'tanggal_pengembalian',
+        'status',
     ];
     public function buku()
     {
-        return $this->belongsTo(Buku::class,'id_buku', 'id');
+        return $this->belongsTo(Buku::class,'buku_id', 'id');
+    }
+
+    public function anggota()
+    {
+        return $this->belongsTo(Anggota::class, 'anggota_id');
     }
 
 }
