@@ -32,25 +32,24 @@ class AnggotaController extends Controller
 
     public function DaftarPinjaman()
     {
-        $pinjaman = Pinjaman::with('buku')->get(); // JOIN otomatis via Eloquent
+        $pinjaman = Buku::all();
         return view('Anggota.pinjaman', compact('pinjaman'));
     }
-    
-        public function showPinjaman(Pinjaman $pinjaman)
-        {
-            // Kirim data buku yang sudah ditemukan ke view 'detail'
-            return view('Anggota.pinjaman', ['pinjaman' => $pinjaman]);
-        }
-        public function cari(Request $request)
+
+    public function showBuku(Buku $buku)
+    {
+        return view('Anggota.detail_buku', compact('buku'));
+    }
+    public function cari(Request $request)
     {
         $keyword = $request->keyword;
-    
+
         $pinjaman = Pinjaman::with('buku')
             ->whereHas('buku', function ($query) use ($keyword) {
                 $query->where('nama_buku', 'like', "%$keyword%");
             })
             ->get();
-    
+
         return view('Anggota.pinjaman', compact('pinjaman'));
     }
 
@@ -106,7 +105,7 @@ class AnggotaController extends Controller
             ],
             'alamat' => 'required|string|max:500',
         ];
-        
+
         if ($request->filled('password')) {
             $validate['old_password'] = 'required';
             $validate['password'] = 'required|confirmed|different:old_password';
@@ -115,20 +114,20 @@ class AnggotaController extends Controller
                 return back()->with('warning', 'Password lama tidak sesuai');
             }
         }
-        
+
         $validatedData = $request->validate($validate, [
             'nama_anggota.required' => 'Nama anggota wajib diisi',
             'email.unique' => 'Email ini sudah digunakan oleh anggota lain',
             'no_hp.unique' => 'Nomor HP ini sudah digunakan oleh anggota lain',
             'password.different' => 'Password baru harus berbeda dengan password lama',
         ]);
-        
+
         if (isset($validatedData['password'])) {
             $validatedData['password'] = Hash::make($validatedData['password']);
         }
 
         $anggota->update($validatedData);
-        
+
         return redirect()->back()->with('success', 'Data anggota berhasil diperbarui');
     }
 }

@@ -26,7 +26,7 @@ class Buku extends Model
         'status_buku',
     ];
 
-        public function peminjaman()
+    public function peminjaman()
     {
         return $this->hasMany(Pinjaman::class, 'buku_id');
     }

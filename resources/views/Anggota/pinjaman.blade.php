@@ -91,41 +91,56 @@
     <div class="main-content">
         <x-topbar></x-topbar>
 
-        <div class="container my-5">
-            <h1 class="text-center mb-2">Pinjaman</h1>
-            <p class="text-center text-muted mb-5">Daftar buku buku yang kamu pinjam</p>
+        <main class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                            <h6 class="m-0 fw-bold text-primary">Daftar Buku</h6>
 
-            <div class="row mb-4">
-                <div class="col-md-12">
-                    <div class="input-group">
-                    <form action="{{ route('pinjaman.cari') }}" method="GET" class="d-flex mb-3 col-12">
-    <input type="text" name="keyword" class="form-control me-2" placeholder="Cari nama buku...">
-    <button type="submit" class="btn btn-primary">
-     Cari
-    </button>
-</form>
-                    </div>
-                </div>
-            </div>
+                        </div>
 
-            <div class="row g-4">
-                @foreach ($pinjaman as $item)
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="card h-100 shadow-sm">
-                        <img src="https://placehold.co/400x600/888/fff?text={{ urlencode($item->buku->nama_buku) }}"
-                            class="card-img-top" alt="Cover Buku">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">{{ $item->buku->nama_buku }}</h5>
-                            <p class="card-subtitle mb-2 text-muted">Tanggal Pinjaman : {{ \Carbon\Carbon::parse($item->tgl_pinjaman)->format('d F y') }}</p>
-                            <p class="card-subtitle mb-2 text-muted">Tanggal Dikembalikan : {{ \Carbon\Carbon::parse($item->tgl_lambat)->format('d F y') }}</p>
-                            <p class="card-subtitle mb-2 text-muted">Denda : Rp. {{ $item->denda }}</p>
-                            
+                        <div class="container">
+
+
+                            @if ($message = Session::get('success'))
+                            <div class="alert alert-success">
+                                <p>{{ $message }}</p>
+                            </div>
+                            @endif
+
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama Buku</th>
+                                    <th>Penerbit</th>
+                                    <th>ISBN</th>
+                                    <th>Status</th>
+                                    <th width="280px">Aksi</th>
+                                </tr>
+                                @foreach ($pinjaman as $buku)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $buku->nama_buku }}</td>
+                                    <td>{{ $buku->penerbit }}</td>
+                                    <td>{{ $buku->isbn }}</td>
+                                    <td>{{ $buku->status_buku }}</td>
+                                    <td>
+                                        <form action=""
+                                            method="POST">
+                                            <a class="btn btn-info btn-sm"
+                                                href="{{ route('anggota.buku.show', $buku->id) }}">Detail</a>
+
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </table>
                         </div>
                     </div>
                 </div>
-                @endforeach
             </div>
-        </div>
+        </main>
 
     </div>
 

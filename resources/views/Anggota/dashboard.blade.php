@@ -89,9 +89,6 @@
 <body>
     <x-sidebar-anggota></x-sidebar-anggota>
     <div class="main-content">
-        <x-topbar></x-topbar>
-
-
 
     </div>
 

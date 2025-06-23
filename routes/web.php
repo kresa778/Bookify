@@ -62,6 +62,3 @@ Route::prefix('pengurus')->name('pengurus.')->group(function () {
     Route::resource('pinjaman', PinjamanController::class);
     Route::resource('anggota', AnggotaAdminController::class);
 });
-
-
-
