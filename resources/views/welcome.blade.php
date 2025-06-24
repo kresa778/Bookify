@@ -26,7 +26,7 @@
         <div class="container">
             <a class="navbar-brand fw-bold" href="#">
                 <i class="bi bi-book-half"></i>
-                E-Perpus [Nama Sekolah]
+                Bookify
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -42,9 +42,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/login">Login</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Tentang Kami</a>
-                    </li>
                 </ul>
             </div>
         </div>
@@ -56,7 +53,7 @@
                 <div class="col-lg-6 col-md-8 mx-auto">
                     <h1 class="fw-bold">Gerbang Menuju Dunia Pengetahuan</h1>
                     <p class="lead text-body-secondary">
-                        Aplikasi Perpustakaan Digital [Nama Sekolah]. Cari, pinjam, dan baca buku favoritmu di mana saja dan kapan saja.
+                        Aplikasi Perpustakaan Digital. Cari, pinjam, dan baca buku favoritmu di mana saja dan kapan saja.
                     </p>
                     <p>
                         <a href="/login" class="btn btn-primary my-2">Masuk Sekarang</a>
@@ -100,38 +97,12 @@
             </div>
         </section>
 
-        <section id="login" class="py-5">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card shadow">
-                            <div class="card-body p-4 p-md-5">
-                                <h3 class="text-center mb-4">Login Akun</h3>
-                                <form>
-                                    <div class="mb-3">
-                                        <label for="username" class="form-label">Username / ID Siswa</label>
-                                        <input type="text" class="form-control" id="username" placeholder="Masukkan username Anda" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="password" class="form-label">Password</label>
-                                        <input type="password" class="form-control" id="password" placeholder="Masukkan password" required>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary w-100 mt-3">Masuk</button>
-                                    <div class="text-center mt-3">
-                                        <a href="#" class="form-text">Lupa password?</a>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+
     </main>
 
     <footer class="bg-dark text-white text-center p-3">
         <div class="container">
-            <p class="mb-0">&copy; 2025 [Nama Sekolah]. All Rights Reserved.</p>
+            <p class="mb-0">&copy; 2025 Bookify. All Rights Reserved.</p>
         </div>
     </footer>
 

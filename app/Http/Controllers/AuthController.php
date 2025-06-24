@@ -12,37 +12,27 @@ class AuthController extends Controller
 {
     public function showLoginForm()
     {
-        return view('Auth.login'); // Pastikan Anda punya view ini
+        return view('Auth.login');
     }
 
-    /**
-     * Menangani proses login.
-     */
     public function login(Request $request)
     {
-        // 1. Validasi input, sekarang kita menggunakan 'email'
         $credentials = $request->validate([
-            'email' => 'required|string', // Validasi sebagai email
+            'email' => 'required|string',
             'password' => 'required|string',
         ]);
 
-        // 2. Coba login sebagai Pengurus terlebih dahulu
-        // Mencari berdasarkan kolom 'email_pengurus'
         $pengurus = PengurusPerpustakaan::where('email_pengurus', $credentials['email'])->first();
 
         if ($pengurus && Hash::check($credentials['password'], $pengurus->password)) {
-            // Jika pengurus ditemukan dan password cocok
             Auth::guard('pengurus')->login($pengurus);
             $request->session()->regenerate();
             return redirect()->route('pengurus.dashboard');
         }
 
-        // 3. Jika bukan pengurus, coba login sebagai Anggota
-        // Mencari berdasarkan kolom 'email'
         $anggota = Anggota::where('email', $credentials['email'])->first();
 
         if ($anggota && Hash::check($credentials['password'], $anggota->password)) {
-            // Jika anggota ditemukan dan password cocok
             Auth::guard('anggota')->login($anggota);
             $request->session()->regenerate();
 
@@ -51,9 +41,8 @@ class AuthController extends Controller
             return redirect()->route('anggota.pinjaman');
         }
 
-        // 4. Jika keduanya gagal, kembali ke halaman login dengan pesan error
         return back()->withErrors([
-            'email' => 'Email atau password salah.', // Pesan error sekarang merujuk ke email
+            'email' => 'Email atau password salah.',
         ])->onlyInput('email');
     }
 
@@ -64,36 +53,29 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        // 1. Validasi data yang masuk dari form
         $request->validate([
             'nama_anggota' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:tabel_anggota,email', // Email harus unik di tabel_anggota
-            'password' => 'required|string|min:8|confirmed', // 'confirmed' akan mencocokkan dengan field password_confirmation
+            'email' => 'required|string|email|max:255|unique:tabel_anggota,email',
+            'password' => 'required|string|min:8|confirmed',
             'no_hp' => 'required|string|max:15',
             'alamat' => 'required|string',
         ]);
 
-        // 2. Jika validasi berhasil, buat anggota baru
         $anggota = Anggota::create([
             'nama_anggota' => $request->nama_anggota,
             'email' => $request->email,
-            'password' => Hash::make($request->password), // PENTING: Hash password sebelum disimpan
+            'password' => Hash::make($request->password),
             'no_hp' => $request->no_hp,
             'alamat' => $request->alamat,
         ]);
 
-        // 3. Setelah berhasil dibuat, langsung loginkan anggota tersebut
         Auth::guard('anggota')->login($anggota);
 
-        // 4. Arahkan ke halaman yang sesuai (misalnya ke katalog buku)
         return redirect()->route('login');
     }
-    /**
-     * Menangani proses logout.
-     */
+
     public function logout(Request $request)
     {
-        // Logout dari guard yang sedang aktif
         if (Auth::guard('pengurus')->check()) {
             Auth::guard('pengurus')->logout();
         } elseif (Auth::guard('anggota')->check()) {

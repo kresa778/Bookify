@@ -1,5 +1,5 @@
 <div class="sidebar text-white">
-    <h4 class="text-center mb-4">Bookify Anggota</h4>
+    <h4 class="text-center mb-4">Bookify</h4>
     <ul class="nav flex-column">
         <li class="nav-item">
             {{-- Aktif jika nama route persis 'admin.dashboard' --}}

@@ -8,13 +8,9 @@ use App\Models\Buku;
 
 class Pinjaman extends Model
 {
-    //
+
     use HasFactory;
 
-    /**
-     * Baris ini wajib ada untuk memberitahu Laravel
-     * bahwa Model ini menggunakan tabel 'tabel_buku'
-     */
     protected $table = 'tabel_pinjaman';
     protected $fillable = [
         'buku_id',
@@ -26,7 +22,7 @@ class Pinjaman extends Model
     ];
     public function buku()
     {
-        return $this->belongsTo(Buku::class, 'id_buku', 'id');
+        return $this->belongsTo(Buku::class, 'buku_id', 'id');
     }
 
     public function anggota()

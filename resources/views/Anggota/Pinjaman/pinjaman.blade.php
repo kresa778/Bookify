@@ -99,7 +99,6 @@
                             <h6 class="m-0 fw-bold text-primary">Daftar Buku</h6>
 
                         </div>
-
                         <div class="container">
 
 
@@ -118,18 +117,18 @@
                                     <th>Status</th>
                                     <th width="280px">Aksi</th>
                                 </tr>
-                                @foreach ($pinjaman as $buku)
+                                @foreach ($pinjaman as $index)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $buku->nama_buku }}</td>
-                                    <td>{{ $buku->penerbit }}</td>
-                                    <td>{{ $buku->isbn }}</td>
-                                    <td>{{ $buku->status_buku }}</td>
+                                    <td>{{ $index->buku->nama_buku }}</td>
+                                    <td>{{ $index->buku->penerbit  }}</td>
+                                    <td>{{ $index->buku->isbn  }}</td>
+                                    <td>{{ $index->status }}</td>
                                     <td>
                                         <form action=""
                                             method="POST">
                                             <a class="btn btn-info btn-sm"
-                                                href="{{ route('anggota.buku.show', $buku->id) }}">Detail</a>
+                                                href="{{ route('anggota.pinjaman.show', $index->id) }}">Detail</a>
 
                                         </form>
                                     </td>

@@ -13,15 +13,6 @@ class AnggotaSeeder extends Seeder
     {
         DB::table('tabel_anggota')->insert([
             [
-                'nama_anggota' => 'Ibnu Hadi',
-                'password'     => Hash::make('password123'),
-                'email'        => 'ibnu@example.com',
-                'no_hp'        => '081234567890',
-                'alamat'       => 'Jl. Mawar No. 10, Jakarta',
-                'created_at'   => now(),
-                'updated_at'   => now(),
-            ],
-            [
                 'nama_anggota' => 'kresa',
                 'password'     => Hash::make('kresa'),
                 'email'        => 'kresa',

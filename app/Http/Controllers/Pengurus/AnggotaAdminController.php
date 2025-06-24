@@ -15,17 +15,11 @@ class AnggotaAdminController extends Controller
         return view('PengurusPerpustakaan.Anggota.index', compact('anggotas'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('PengurusPerpustakaan.Anggota.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -42,25 +36,16 @@ class AnggotaAdminController extends Controller
                          ->with('success', 'Anggota baru berhasil ditambahkan.');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Anggota $anggotum)
     {
         return view('PengurusPerpustakaan.Anggota.show', ['anggota' => $anggotum]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Anggota $anggotum)
     {
         return view('PengurusPerpustakaan.Anggota.edit', ['anggota' => $anggotum]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Anggota $anggotum)
     {
         $request->validate([
@@ -71,10 +56,8 @@ class AnggotaAdminController extends Controller
             'password' => ['nullable', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        // Siapkan data untuk diupdate
         $updateData = $request->except('password');
 
-        // Jika password diisi, tambahkan ke data update
         if ($request->filled('password')) {
             $updateData['password'] = $request->password;
         }
@@ -85,9 +68,6 @@ class AnggotaAdminController extends Controller
                          ->with('success', 'Data anggota berhasil diperbarui.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Anggota $anggotum)
     {
         $anggotum->delete();

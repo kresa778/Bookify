@@ -14,32 +14,37 @@ use App\Models\Pinjaman;
 class AnggotaController extends Controller
 {
 
-    public function DashboardAnggota()
-    {
-        $buku = Buku::all();
-        return view('Anggota.dashboard', compact('buku'));
-    }
     public function DaftarBuku()
     {
         $buku = Buku::all();
-        return view('Anggota.buku', compact('buku'));
+        return view('Anggota.Buku.buku', compact('buku'));
     }
     public function show(Buku $buku)
     {
-        // Kirim data buku yang sudah ditemukan ke view 'detail'
-        return view('Anggota.detail', ['buku' => $buku]);
+
+        return view('Anggota.Buku.detail', ['buku' => $buku]);
     }
 
-    public function DaftarPinjaman()
+     public function DaftarPinjaman()
     {
-        $pinjaman = Buku::all();
-        return view('Anggota.pinjaman', compact('pinjaman'));
+        $idAnggota = session('user_anggota')['id'];
+
+        $pinjaman = Pinjaman::with('buku' )->where('anggota_id', $idAnggota)->get();
+
+        return view('Anggota.Pinjaman.pinjaman', compact('pinjaman'));
     }
 
-    public function showBuku(Buku $buku)
+    public function detailPinjaman(Pinjaman $pinjaman)
     {
-        return view('Anggota.detail_buku', compact('buku'));
+        $pinjaman->load('buku');
+
+
+        return view('Anggota.Pinjaman.detail', [
+            'pinjaman' => $pinjaman
+        ]);
     }
+
+
     public function cari(Request $request)
     {
         $keyword = $request->keyword;
@@ -50,28 +55,10 @@ class AnggotaController extends Controller
             })
             ->get();
 
-        return view('Anggota.pinjaman', compact('pinjaman'));
+        return view('Anggota.Pinjaman.pinjaman', compact('pinjaman'));
     }
 
 
-    // public function show(Anggota $anggota)
-    // {
-    //     // Kirim data buku yang sudah ditemukan ke view 'detail'
-    //     return view('detail', ['buku' => $anggota]);
-    // }
-
-    /**
-     * PROFILE
-     * =========================================================================
-     */
-
-    /**
-     * Show form profile anggota
-     * 
-     * @param \Illuminate\Http\Request $request
-     * 
-     * @return \Illuminate\View\View
-     */
     public function profile(Request $request)
     {
         $data['anggota'] = Anggota::firstWhere('id', session('user_anggota')['id']);
@@ -79,19 +66,10 @@ class AnggotaController extends Controller
         return view('Anggota.profile', compact('data'));
     }
 
-    /**
-     * Proccess update profile anggota
-     * 
-     * @param \Illuminate\Http\Request $request
-     * 
-     * @return
-     */
     public function profileUpdate(Request $request)
     {
-        // get session anggota
         $anggota = Anggota::firstWhere('id', session('user_anggota')['id']);
 
-        // Set validation rules
         $validate = [
             'nama_anggota' => 'required|string|max:255',
             'email' => [

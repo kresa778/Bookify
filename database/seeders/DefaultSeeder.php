@@ -4,29 +4,19 @@ namespace Database\Seeders;
 
 use App\Models\Buku;
 use App\Models\PengurusPerpustakaan;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
 class DefaultSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
         $this->insertUser();
         $this->insertBuku();
     }
 
-    /**
-     * Seed default data user
-     *
-     * @return void
-     */
     private function insertUser()
     {
-        // pengurus
         $pengurus = [
             [
                 'nama_pengurus' => 'Pengurus Utama',
@@ -48,11 +38,6 @@ class DefaultSeeder extends Seeder
         }
     }
 
-    /**
-     * Seed default data buku
-     *
-     * @return void
-     */
     private function insertBuku()
     {
         $books = [
@@ -68,7 +53,7 @@ class DefaultSeeder extends Seeder
             [
                 'nama_buku' => 'Dasar-Dasar Jaringan Komputer',
                 'penerbit' => 'Gramedia',
-                'edisi' => '2',
+                'edisi' => '1',
                 'sinopsis' => 'Pengantar jaringan komputer untuk pemula.',
                 'isbn' => '9786022345678',
                 'lokasi_buku' => 'Rak B2',
@@ -95,7 +80,7 @@ class DefaultSeeder extends Seeder
             [
                 'nama_buku' => 'Database Relasional',
                 'penerbit' => 'Informatika Bandung',
-                'edisi' => '2',
+                'edisi' => '1',
                 'sinopsis' => 'Belajar membuat database relasional dengan SQL.',
                 'isbn' => '9786025678901',
                 'lokasi_buku' => 'Rak D1',
@@ -113,7 +98,7 @@ class DefaultSeeder extends Seeder
             [
                 'nama_buku' => 'Pemrograman Java',
                 'penerbit' => 'Elex Media',
-                'edisi' => '2',
+                'edisi' => '1',
                 'sinopsis' => 'Dasar-dasar pemrograman dengan Java.',
                 'isbn' => '9786027890123',
                 'lokasi_buku' => 'Rak C2',
@@ -140,7 +125,7 @@ class DefaultSeeder extends Seeder
             [
                 'nama_buku' => 'Rekayasa Perangkat Lunak',
                 'penerbit' => 'Informatika Bandung',
-                'edisi' => '2',
+                'edisi' => '1',
                 'sinopsis' => 'Teknik dan metode pengembangan perangkat lunak.',
                 'isbn' => '9786020123456',
                 'lokasi_buku' => 'Rak D2',
@@ -176,7 +161,7 @@ class DefaultSeeder extends Seeder
             [
                 'nama_buku' => 'Keamanan Jaringan',
                 'penerbit' => 'Gramedia',
-                'edisi' => '2',
+                'edisi' => '1',
                 'sinopsis' => 'Konsep dan praktik keamanan jaringan.',
                 'isbn' => '9786024567801',
                 'lokasi_buku' => 'Rak C1',
@@ -203,7 +188,7 @@ class DefaultSeeder extends Seeder
             [
                 'nama_buku' => 'Cloud Computing',
                 'penerbit' => 'Deepublish',
-                'edisi' => '2',
+                'edisi' => '1',
                 'sinopsis' => 'Dasar dan implementasi cloud.',
                 'isbn' => '9786027890134',
                 'lokasi_buku' => 'Rak A5',

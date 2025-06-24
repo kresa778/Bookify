@@ -25,7 +25,7 @@ return new class extends Migration
                   ->onDelete('cascade'); // Jika anggota dihapus, data pinjaman ini ikut terhapus
 
             $table->date('tanggal_pinjam');
-            $table->date('tanggal_kembali'); // Tanggal jatuh tempo
+            $table->date('tanggal_kembali')->nullable();
             $table->date('tanggal_pengembalian')->nullable(); // Tanggal aktual saat buku dikembalikan
             $table->enum('status', ['Dipinjam', 'Kembali', 'Terlambat'])->default('Dipinjam');
 

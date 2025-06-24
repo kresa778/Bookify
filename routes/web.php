@@ -48,11 +48,11 @@ Route::prefix('anggota')->group(function () {
     Route::get('profile', [AnggotaController::class, 'profile'])->name('anggota.profile');
     Route::put('profile', [AnggotaController::class, 'profileUpdate'])->name('anggota.profile.update');
 
-    Route::get('dashboard', [AnggotaController::class, 'DashboardAnggota'])->name('anggota.dashboard');
-    Route::get('buku', [AnggotaController::class, 'DaftarBuku'])->name('anggota.buku');
-    Route::get('/buku/{buku}', [AnggotaController::class, 'show'])->name('anggota.buku.show');
     Route::get('pinjaman', [AnggotaController::class, 'DaftarPinjaman'])->name('anggota.pinjaman');
     Route::get('/pinjaman/cari', [AnggotaController::class, 'cari'])->name('pinjaman.cari');
+    Route::get('/pinjaman/{pinjaman}', [AnggotaController::class, 'detailPinjaman'])->name('anggota.pinjaman.show');
+    Route::get('buku', [AnggotaController::class, 'DaftarBuku'])->name('anggota.buku');
+    Route::get('/buku/{buku}', [AnggotaController::class, 'show'])->name('anggota.buku.show');
 });
 
 

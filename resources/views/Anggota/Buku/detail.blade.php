@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - Bookify</title>
+    <title>Anggota Dashboard - Bookify</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -24,13 +24,11 @@
             top: 0;
             left: 0;
             background-color: #343a40;
-            /* Warna gelap untuk sidebar */
             padding-top: 1rem;
         }
 
         .sidebar .nav-link {
             color: #adb5bd;
-            /* Warna teks link */
             font-size: 1rem;
             padding: 0.75rem 1.5rem;
             transition: all 0.2s;
@@ -39,7 +37,6 @@
         .sidebar .nav-link:hover,
         .sidebar .nav-link.active {
             color: #fff;
-            /* Warna teks saat aktif/hover */
             background-color: #495057;
         }
 
@@ -88,50 +85,63 @@
 </head>
 
 <body>
-
-    <x-sidebar-admin></x-sidebar-admin>
+    <x-sidebar-anggota></x-sidebar-anggota>
     <div class="main-content">
         <x-topbar-admin></x-topbar-admin>
 
-        <main class="container-fluid">
-            <div class="container">
-                <h1>Detail Buku</h1>
 
-                <div class="card">
-                    <div class="card-body">
-                        <div class="mb-3">
-                            <strong>Nama Buku:</strong>
-                            <p>{{ $buku->nama_buku }}</p>
-                        </div>
-                        <div class="mb-3">
-                            <strong>Penerbit:</strong>
-                            <p>{{ $buku->penerbit }}</p>
-                        </div>
-                        <div class="mb-3">
-                            <strong>ISBN:</strong>
-                            <p>{{ $buku->isbn }}</p>
-                        </div>
-                        <div class="mb-3">
-                            <strong>Edisi:</strong>
-                            <p>{{ $buku->edisi ?? '-' }}</p>
-                        </div>
-                        <div class="mb-3">
-                            <strong>Lokasi Buku:</strong>
-                            <p>{{ $buku->lokasi_buku }}</p>
-                        </div>
-                        <div class="mb-3">
-                            <strong>Status Buku:</strong>
-                            <p><span class="badge bg-info">{{ $buku->status_buku }}</span></p>
-                        </div>
-                        <div class="mb-3">
-                            <strong>Sinopsis:</strong>
-                            <p>{{ $buku->sinopsis ?? 'Tidak ada sinopsis.' }}</p>
-                        </div>
+        <div class="container my-5">
+            <div class="row g-5">
+                <div class="col-md-4">
+                    <img src="https://placehold.co/400x600/888/fff?text={{ urlencode($buku->nama_buku) }}"
+                        class="img-fluid rounded shadow-lg w-100" alt="Cover Buku {{ $buku->nama_buku }}">
+                </div>
+
+                <div class="col-md-8">
+                    <h1>{{ $buku->nama_buku }}</h1>
+
+                    @if ($buku->status_buku == 'Tersedia')
+                        <span class="badge bg-success fs-6">Tersedia</span>
+                    @else
+                        <span class="badge bg-danger fs-6">Dipinjam</span>
+                    @endif
+
+                    <hr>
+
+                    <p class="lead">{{ $buku->sinopsis }}</p>
+
+                    <h4 class="mt-4">Detail Informasi</h4>
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr>
+                                <th scope="row" style="width: 200px;">Penerbit</th>
+                                <td>{{ $buku->penerbit }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Edisi</th>
+                                <td>{{ $buku->edisi }}</td>
+                            <tr>
+                                <th scope="row">Lokasi Buku</th>
+                                <td>{{ $buku->lokasi_buku }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">ISBN</th>
+                                <td>{{ $buku->isbn }}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                    <div class="mt-4">
+                        <a href="{{ route('anggota.buku') }}" class="btn btn-lg btn-outline-secondary">
+                            <i class="bi bi-arrow-left"></i> Kembali ke Katalog
+                        </a>
                     </div>
                 </div>
-                <a class="btn btn-primary mt-3" href="{{ route('pengurus.buku.index') }}">Kembali</a>
             </div>
-        </main>
+        </div>
+
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
